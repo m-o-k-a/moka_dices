@@ -58,7 +58,7 @@ class _DicePageState extends State<DicePage> {
             child: Text('Rolls Dice(s)', style: TextStyle(fontSize: 24, color: Colors.white)),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Expanded(
                 child: Ink(
