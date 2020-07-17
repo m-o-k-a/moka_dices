@@ -23,19 +23,19 @@ class DicePage extends StatelessWidget {
   Widget build(BuildContext context) {
     dicesAmount = 2;
     return Center(
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           if(dicesAmount == 0)
             Text("Select A Dice Amount To Start.",textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Colors.white)),
-          if(dicesAmount >= 1)
-            Expanded(child: Padding(padding: const EdgeInsets.all(20.0),
-                child: Image.asset("assets/images/dice" + getRandomValue() + ".png"),),),
-
-          if(dicesAmount >= 2)
-          Expanded(child: Padding(padding: const EdgeInsets.all(20.0),
-              child: Image.asset("assets/images/dice"+getRandomValue()+".png"),),),
-          
+          for(var i = dicesAmount; i>0; i-=2)
+            Row(
+              children: <Widget>[
+                for(var j = i; (j>i-2 && j>0); j--)
+                  Expanded(child: Padding(padding: const EdgeInsets.all(20.0),
+                    child: Image.asset("assets/images/dice"+getRandomValue()+".png"),),),
+              ],
+            ),
         ],
       ),
     );
