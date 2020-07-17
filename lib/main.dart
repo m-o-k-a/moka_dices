@@ -49,6 +49,14 @@ class _DicePageState extends State<DicePage> {
                   ),),
               ],
             ),
+          const SizedBox(height: 30),
+          RaisedButton(
+            color: Colors.cyan[600],
+            onPressed: () {
+              setState(() {});
+            },
+            child: const Text('Rolls Dices', style: TextStyle(fontSize: 24, color: Colors.white)),
+          ),
         ],
       ),
     );
