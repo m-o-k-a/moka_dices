@@ -27,7 +27,6 @@ class DicePage extends StatefulWidget {
 class _DicePageState extends State<DicePage> {
   @override
   Widget build(BuildContext context) {
-    dicesAmount = 4;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -50,12 +49,42 @@ class _DicePageState extends State<DicePage> {
               ],
             ),
           const SizedBox(height: 30),
+          if(dicesAmount > 0)
           RaisedButton(
             color: Colors.cyan[600],
             onPressed: () {
               setState(() {});
             },
-            child: const Text('Rolls Dices', style: TextStyle(fontSize: 24, color: Colors.white)),
+            child: Text('Rolls Dice(s)', style: TextStyle(fontSize: 24, color: Colors.white)),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: Ink(
+                  decoration: ShapeDecoration(color: Colors.white, shape: CircleBorder(),),
+                  child: IconButton(icon: Icon(Icons.filter_1), color: Colors.cyan, onPressed: () {
+                    setState(() {dicesAmount = 1;});
+                  },),
+                ),
+              ),
+              Expanded(
+                child: Ink(
+                  decoration: ShapeDecoration(color: Colors.white, shape: CircleBorder(),),
+                  child: IconButton(icon: Icon(Icons.filter_2), color: Colors.cyan, onPressed: () {
+                    setState(() {dicesAmount = 2;});
+                  },),
+                ),
+              ),
+              Expanded(
+                child: Ink(
+                  decoration: ShapeDecoration(color: Colors.white, shape: CircleBorder(),),
+                  child: IconButton(icon: Icon(Icons.filter_4), color: Colors.cyan, onPressed: () {
+                    setState(() {dicesAmount = 4;});
+                  },),
+                ),
+              ),
+            ],
           ),
         ],
       ),
