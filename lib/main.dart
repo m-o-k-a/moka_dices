@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
 var random = new Random();
+var dicesAmount = 0;
 
 void main() {
   return runApp(
@@ -19,17 +21,23 @@ void main() {
 class DicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    dicesAmount = 2;
     return Center(
-        child: Row(
-      children: <Widget>[
-        Expanded(
-          child: Image(image: AssetImage("assets/images/dice"+getRandomValue()+".png"),),
-        ),
-        Expanded(
-          child: Image(image: AssetImage("assets/images/dice"+getRandomValue()+".png"),),
-        ),
-      ],
-    ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          if(dicesAmount == 0)
+            Text("Select A Dice Amount To Start.",textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Colors.white)),
+          if(dicesAmount >= 1)
+            Expanded(child: Padding(padding: const EdgeInsets.all(20.0),
+                child: Image.asset("assets/images/dice" + getRandomValue() + ".png"),),),
+
+          if(dicesAmount >= 2)
+          Expanded(child: Padding(padding: const EdgeInsets.all(20.0),
+              child: Image.asset("assets/images/dice"+getRandomValue()+".png"),),),
+          
+        ],
+      ),
     );
   }
 }
