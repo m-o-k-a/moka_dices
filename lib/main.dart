@@ -5,6 +5,7 @@ import 'dart:math';
 var random = new Random();
 var dicesAmount = 0;
 
+
 void main() {
   return runApp(
     MaterialApp(
@@ -18,10 +19,15 @@ void main() {
   );
 }
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
   @override
   Widget build(BuildContext context) {
-    dicesAmount = 2;
+    dicesAmount = 4;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,8 +38,15 @@ class DicePage extends StatelessWidget {
             Row(
               children: <Widget>[
                 for(var j = i; (j>i-2 && j>0); j--)
-                  Expanded(child: Padding(padding: const EdgeInsets.all(20.0),
-                    child: Image.asset("assets/images/dice"+getRandomValue()+".png"),),),
+                  Expanded(child: FlatButton(
+                    padding: EdgeInsets.all(20.0),
+                    child: Image.asset("assets/images/dice"+getRandomValue()+".png"),
+                    onPressed: (){
+                      setState(() {
+                        //todo change only this child when pressed
+                      });
+                    },
+                  ),),
               ],
             ),
         ],
